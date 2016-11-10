@@ -32,26 +32,39 @@ public class MainPanelTest {
     @Test
     public void testConvertToInt() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException{
         // Here, I use Reflection to test private method, it also could be test private fields.
-        
+        // The method is to convert an Int to String then repeatly copy the result then concate 
         MainPanel mp = new MainPanel();
         Method privateConvertToInt = MainPanel.class.getDeclaredMethod("convertToInt", java.lang.Integer.TYPE);
         privateConvertToInt.setAccessible(true);
         int returnvalue = 0;
         try {//catch the exception
-            returnvalue = (int)privateConvertToInt.invoke(mp, 1);// give the method a value
+            returnvalue = (int)privateConvertToInt.invoke(mp, 1000000000);// give the method a value
         } catch (InvocationTargetException ex) {
             Logger.getLogger(MainPanelTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        assertEquals(returnvalue,1);//check the returned value 
+        assertEquals(returnvalue,1000000000);//check the returned value 
         
+        try {//catch the exception
+            returnvalue = (int)privateConvertToInt.invoke(mp, -1000000000 );// give the method a value
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(MainPanelTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        assertEquals(returnvalue,-1000000000);
+        
+        try {//catch the exception
+            returnvalue = (int)privateConvertToInt.invoke(mp, 0);// give the method a value
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(MainPanelTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        assertEquals(returnvalue,0);
     }
     
-    @Test
+    @Test 
     public void testBackup() throws NoSuchFieldException{
         //  Here, I still used Reflection in order to use private declarated field.
         MainPanel mp = new MainPanel();
         
-        Cell[][] cells = new Cell[1][1];
+        Cell[][] cells = new Cell[1][1];//When cell has value
         Cell c = new Cell();//create a cell 
         c.setText("test");
         cells[0][0] = c;
@@ -77,8 +90,9 @@ public class MainPanelTest {
         assertEquals(fieldvalue[0][0].getText(),"test");//the value of the field which received copied value should be identical with the primary value.
         
         
+         
         
-        cells = null;
+        cells = null;//when cell is Null
         mp.setCells(cells);//set cell[][]
         mp.backup();
         

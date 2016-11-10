@@ -21,15 +21,17 @@ public class CellTest {
    @Test
    public void testToString(){
        Cell c = new Cell();
-       
+       // test the regular input
        c.setText("A");
        String returnValue = c.toString();
        assertEquals("A",returnValue);
        
+       //test the else 
        c.setText("test");
        returnValue = c.toString();
        assertEquals(".",returnValue);
        
+       //test the null
        c.setText(null);
        returnValue = c.toString();
        assertEquals(".",returnValue);

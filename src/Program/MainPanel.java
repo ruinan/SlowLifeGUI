@@ -42,14 +42,12 @@ public class MainPanel extends JPanel {
 //	    String l = new String("0");
 //	    padding += l;
 //	    c++;
-//	}
+//	}  
 //
 //	String n = padding + String.valueOf(x);
 //	int q = Integer.parseInt(n);
 //	return q;
-
-
-       return x;// there is no necessaryly adding those '0' then convert the String to the Int
+        return x;// there is no necessaryly adding those '0' then convert the String to the Int
     }
 
     private int getNumNeighbors(int x, int y) {
@@ -144,7 +142,7 @@ public class MainPanel extends JPanel {
        if(_cells != null){
            _backupCells = _cells.clone();//do not need to copy one by one
        }
-      
+//      
        
        
         
@@ -239,7 +237,7 @@ public class MainPanel extends JPanel {
 	_running = true;
 	while (_running) {
 	    System.out.println("Running...");
-            // in this part, the Thread has been forced to sleep 20ms
+//             //in this part, the Thread has been forced to sleep 20ms
 //	    int origR = _r;
 //	    try {
 //                
