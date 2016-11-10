@@ -9,7 +9,7 @@ To determine the "hot spots" of the application, I used VisualVM to find out whi
 All the methods except the runContinuous() has been add some codes to improve the robustness.
 
 #Screen Shot
-##The original performance. (pid)
-![alt tag](https://github.com/ruinan/SlowLifeGUI/screenshot/BEFORE_MODIFED.png)
+##The original performance
+![alt text](https://github.com/ruinan/SlowLifeGUI/blob/master/screenshot/BEFORE_MODIFED.png)
 
 
