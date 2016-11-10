@@ -1,0 +1,2 @@
+#SUMMARY
+To determine the "hot spots" of the application, I used VisualVM to find out which methods consumed more percentage of time when software run. I set the argument to be 15. And set a pattern for subsequent test in advance. It could make sure that the test pattern is same everytime. That could be used for manual test and easily analyze the change when I modified code in order to improve the performance. Therefore, from the profiling consequence of CPU, I found the 
