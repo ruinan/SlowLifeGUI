@@ -40,16 +40,16 @@ public class Cell extends JButton {
    public String toString() {
        
        // it is not necessarily create a repeative string, then extract only a section of it.
-//      String toReturn = new String("");
-//      String currentState = getText();
-//      for (int j = 0; j < _maxSize; j++) {
-//         toReturn += currentState;
-//      }
-//      if (toReturn.substring(0,1).equals("A")) {
-//         return toReturn.substring(0,1);
-//      } else {
-//         return ".";
-//      }
+//        String toReturn = new String("");
+//        String currentState = getText();
+//        for (int j = 0; j < _maxSize; j++) {
+//           toReturn += currentState;
+//        }
+//        if (toReturn.substring(0,1).equals("A")) {
+//           return toReturn.substring(0,1);
+//        } else {
+//           return ".";
+//        }
         String currentState = this.getText();
         
         if(currentState != null && currentState.equals("A") ){

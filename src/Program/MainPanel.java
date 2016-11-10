@@ -36,18 +36,23 @@ public class MainPanel extends JPanel {
     }
 
     private int convertToInt(int x) {// 
-//	int c = 0;
-//	String padding = "0";
-//	while (c < _r) {
-//	    String l = new String("0");
-//	    padding += l;
-//	    c++;
-//	}  
-//
-//	String n = padding + String.valueOf(x);
-//	int q = Integer.parseInt(n);
-//	return q;
-        return x;// there is no necessaryly adding those '0' then convert the String to the Int
+	int c = 0;
+	String padding = "0";
+	while (c < _r) {
+	    String l = new String("0");
+	    padding += l;
+	    c++;
+	}  
+
+	String n = padding + String.valueOf(x);
+	int q = Integer.parseInt(n);
+	return q;
+//        if(x<0){
+//            return -x;
+//        }
+//        else{
+//         return x;// there is no necessaryly adding those '0' then convert the String to the Int
+//        }
     }
 
     private int getNumNeighbors(int x, int y) {
@@ -132,20 +137,16 @@ public class MainPanel extends JPanel {
      */
 
     public void backup() {
-//	_backupCells = new Cell[_size][_size];
-//	for (int j = 0; j < _size; j++) {
-//	    for (int k = 0; k < _size; k++) {
-//		_backupCells[j][k] = new Cell();
-//		_backupCells[j][k].setAlive(_cells[j][k].getAlive());
-//	    }
-//	}
-       if(_cells != null){
-           _backupCells = _cells.clone();//do not need to copy one by one
-       }
-//      
-       
-       
-        
+	_backupCells = new Cell[_size][_size];
+	for (int j = 0; j < _size; j++) {
+	    for (int k = 0; k < _size; k++) {
+		_backupCells[j][k] = new Cell();
+		_backupCells[j][k].setAlive(_cells[j][k].getAlive());
+	    }
+	}
+//       if(_cells != null){
+//           _backupCells = _cells.clone();//do not need to copy one by one
+//       }   
     }
 
     /**
@@ -164,7 +165,7 @@ public class MainPanel extends JPanel {
 		for (int k = 0; k < _size; k++) {
 
 		    if (_backupCells[j][k].getAlive()) {
-			System.out.print("X");
+			System.out.print("A");
 		    } else {
 			System.out.print(".");
 		    }
@@ -178,7 +179,7 @@ public class MainPanel extends JPanel {
 		for (int k = 0; k < _size; k++) {
 
 		    if (_cells[j][k].getAlive()) {
-			System.out.print("X");
+			System.out.print("A");
 		    } else {
 			System.out.print(".");
 		    }
@@ -243,7 +244,7 @@ public class MainPanel extends JPanel {
 //                
 //		Thread.sleep(20);
 //	    } catch (InterruptedException iex) { }
-//            
+//          // copied a value to a variable then after executing, it retrived previous value.
 //	    for (int j=0; j < _maxCount; j++) {
 //	    	_r += (j % _size) % _maxCount;
 //		_r += _maxCount;

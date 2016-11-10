@@ -49,7 +49,7 @@ public class MainPanelTest {
         } catch (InvocationTargetException ex) {
             Logger.getLogger(MainPanelTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        assertEquals(returnvalue,-1000000000);
+        assertEquals(returnvalue,1000000000);
         
         try {//catch the exception
             returnvalue = (int)privateConvertToInt.invoke(mp, 0);// give the method a value
@@ -62,46 +62,45 @@ public class MainPanelTest {
     @Test 
     public void testBackup() throws NoSuchFieldException{
         //  Here, I still used Reflection in order to use private declarated field.
-        MainPanel mp = new MainPanel();
-        
         Cell[][] cells = new Cell[1][1];//When cell has value
         Cell c = new Cell();//create a cell 
-        c.setText("test");
+        c.setAlive(true);
         cells[0][0] = c;
+        
+        //private int _size = 0;
+        MainPanel mp = new MainPanel(1);
         
         mp.setCells(cells);//set cell[][]
         mp.backup();//execute the method;then backcells should have value
         
+        
+        //private Cell[][] _backupCells;
         Field privateStringField = MainPanel.class.getDeclaredField("_backupCells");
         privateStringField.setAccessible(true);
-        Cell[][] fieldvalue = null;  
+        Cell[][] fieldvalue = new Cell[1][1]; 
         
         try {
             fieldvalue= (Cell[][]) privateStringField.get(mp);//extract  private field
         } catch (IllegalArgumentException | IllegalAccessException ex) {
             Logger.getLogger(MainPanelTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(mp.getCells()[0][0].getText());
-        System.out.println(fieldvalue[0][0].getText());
-        
-        //assertTrue(mp.getCells()[0][0].getText().equals(fieldvalue[0][0].getText()));
-        // because of I used "clone" to copy array, so aturally 
-        assertTrue(Arrays.equals(mp.getCells(),fieldvalue));// the array should be as same as the original one
-        assertEquals(fieldvalue[0][0].getText(),"test");//the value of the field which received copied value should be identical with the primary value.
-        
+        System.out.println(mp.getCells()[0][0].getAlive());
+        System.out.println(fieldvalue[0][0].getAlive());
+       
+        // because of I used "clone" to copy array, so acturally the time to copy the array will shorter than that used for loop
+        assertTrue(fieldvalue[0][0].getAlive());//The activity status of _cell has been set to the true. because the primary value is false.
+       
         
          
-        
-        cells = null;//when cell is Null
-        mp.setCells(cells);//set cell[][]
-        mp.backup();
-        
+        MainPanel mp2 = new MainPanel(1);// when I initialize the mp2, the _cell are all be set  false
+        mp2.backup();
+        Cell[][] fieldvalue2 = new Cell[1][1];
         try {
-            fieldvalue= (Cell[][]) privateStringField.get(mp);//extract  private field
+            fieldvalue2= (Cell[][]) privateStringField.get(mp2);//extract  private field
         } catch (IllegalArgumentException | IllegalAccessException ex) {
             Logger.getLogger(MainPanelTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        assertTrue(fieldvalue != null);
+        assertTrue(!(fieldvalue2[0][0].getAlive()));
         
     }
     
