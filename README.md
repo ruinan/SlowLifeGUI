@@ -10,6 +10,16 @@ All the methods except the runContinuous() has been add some codes to improve th
 
 #Screen Shot
 ##The original performance
+###Performance
 ![alt text](https://github.com/ruinan/SlowLifeGUI/blob/master/screenshot/BEFORE_MODIFED.png)
+![alt text](https://github.com/ruinan/SlowLifeGUI/blob/master/screenshot/BEFORE_MODIFIED2.png)
+###Running Result
+####original pattern
+![alt text](https://github.com/ruinan/SlowLifeGUI/blob/master/screenshot/BEFORE_UPLOAD.png)
+####first step
+![alt text](https://github.com/ruinan/SlowLifeGUI/blob/master/screenshot/BEFORE_FIRSTSTEP.png)
+####result
+![alt text](https://github.com/ruinan/SlowLifeGUI/blob/master/screenshot/BEFORE_RESULT.png)
+
 
 
