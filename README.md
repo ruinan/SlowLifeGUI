@@ -8,7 +8,8 @@ To determine the "hot spots" of the application, I used VisualVM to find out whi
 
 For the manual test, the runContinuous() does not contain any return values. So it is very hard to conduct unit test. Therefore, I choose the manual test to test it. To the original method, it calls a while loop to keep program running. That will response the operation when we click the button. So what I do it to add the breakpoint and call debug mode to find out the value for each step. When program running, I preload a certain pattern for test. Then observe each step when I clicked run button. The result told me the 'origR' and '_r' did nothing about the function except increase the executing time. And for each loop, it forced thread to sleep 20ms. Therefore, in the modified version, I removed for loop and relative parameters, and removed thread sleeping code. After doing this, I debug the code, and execute it step to step. I found what I changed would not make any influence about other methods or parameters. So I run program to see whether it will effect the program running and consequence for the preloaded pattern. After running it, I found the result of it is identical with what the original method did. I believe what I modified would not impact the whole program.
 
-All the methods except the runContinuous() has been add some codes to improve the robustness
+All the methods except the runContinuous() has been add some codes to improve the robustness.
+>The stop running condition is when pattern becomes stable or transformate between several pattern.
 
 #Screen Shot
 ##The original performance
